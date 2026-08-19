@@ -17,14 +17,8 @@ const formulario = [
     ];
 
     
-
-    for(let i =0;i < formulario.length;i++){
-        const chaves = Object.keys(formulario[i])
-        for(let j = 0;j < chaves.length ; j++){
-            const chave = chaves[j];
-            result.innerHTML += `<li>${chave}: ${formulario[i][chave]}}</li>`   
-        }
-        
-        
-        }
-    
+formulario.forEach(item => {
+    Object.keys(formulario[0]).forEach(chave =>{
+        result.innerHTML += `<li>${chave}: ${tem[chave]}</li>`
+    })
+});
