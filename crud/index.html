@@ -9,12 +9,18 @@
 
     <h1>Adicione suas tarefas</h1>
     <input type="text" id="entrada">
-    <button onclick="salvarDados()">Salvar</button>
     <br>
+    <button onclick="salvarDados()" id="salvar">Salvar</button>
 
+    <br>
+    <button id="limpar"  onclick="limparCampo()">Limpar</button>
+    <br>
     <h2>Tarefas a fazer</h2>
-    <div id="resultado"></div>
-
+    <div>
+        <ul id="resultado"></ul>
+    </div>
+    
+    
 
 
     <script src="js/script.js"></script>
