@@ -1,35 +1,61 @@
-let entrada = document.querySelector('#entrada');
-let salvar = document.querySelector('#salvar');
-let limpar = document.querySelector('#limpar');
-let resultado = document.querySelector('#resultado');
-let html = '';
-let contador = 0;
+let dadosUsers = []
 
-let valorLista = [];
-let listaTarefa = [{
-    nome: entrada.value,
-}];
+function salvarDados(){
+    let nomeValor = document.querySelector('#nome').value;
+    let matriculaValor = document.querySelector('#matricula').value;
+    
+    let dadosObjeto = 
+    {
+        nome: nomeValor,
+        matricula:matriculaValor,
+    }
 
-let entradaNova = '';
-
-function salvarDados (){    
-    let resultadoArray = valorLista.push(listaTarefa)
-
-    if(!entrada.value){
-        alert("por favor ensira algo!")
+    let dadosLista = dadosUsers.push(dadosObjeto);
+    
+    if(!nomeValor){
+        alert("O Campo Nome nao pode estar vazio");
+        return;
+    }if(!matriculaValor){
+        alert("A Matricula nao pode estar em vazio");
+        return;
     }else{
-        html += `
-        <li>${entrada.value}</li>
-        <button onclick="alterarCampo()">
-            Alterar
-        </button> 
-        <input type="text" id="entrada2">
-        `
-    };
-    resultado.innerHTML =html;
-    limparCampo();
+        alert("O Valor foi Salvo,agora clique em listar para ver os itens ");
+        return
+    }
+    limparCampo()
 }
 
+function listar(){
+    let resultado = document.querySelector('#resultado');
+    resultado.innerHTML = '';
+
+    for(let i = 0;i < dadosUsers.length;i++){
+        resultado.innerHTML += 
+        `
+        <br>
+        Nome: ${dadosUsers[i].nome},
+        Matricula: ${dadosUsers[i].matricula}<br>
+        <button type="button" onclick="editar(${i})">
+            Editar
+        </button>
+        <br>
+         `
+        }
+}
+
+
+function editar(indice){
+    let editarNome = prompt("insira o nome");
+    let editarMatricula = prompt("insira a matricula");
+
+    dadosUsers[indice] =  
+        {
+            nome: editarNome,
+            matricula: editarMatricula,
+        }
+    listar();
+}
 function limparCampo(){
-    entrada.value = '';    
+    document.querySelector('#nome').value = '';
+    document.querySelector('#matricula').value = '';
 }
